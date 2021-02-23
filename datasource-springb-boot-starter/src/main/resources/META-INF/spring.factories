@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.xiaogj.x3.database.config.DynamicDataSourceConfiguration,\
+  com.xiaogj.x3.database.config.TenantMybatisConfiguration

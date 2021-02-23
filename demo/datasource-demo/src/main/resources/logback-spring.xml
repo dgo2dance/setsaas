@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+  <!--应用名称-->
+  <springProperty scope="context" name="appName" source="spring.application.name"/>
+  <springProperty scope="context" name="ip" source="spring.cloud.client.ipAddress"/>
+  <springProperty scope="context" name="active" source="spring.profiles.active"/>
+
+  <!--日志文件保存路径-->
+  <property name="LOG_FILE_PATH" value="${user.dir}/logs"/>
+
+  <!-- 控制台日志 -->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <root level="info">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>

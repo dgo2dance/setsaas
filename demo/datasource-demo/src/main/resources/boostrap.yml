@@ -1,0 +1,20 @@
+server:
+  port: 9024
+  undertow:
+    max-http-post-size: 0
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程,数量和CPU 内核数目一样即可
+    io-threads: 2
+    # 阻塞任务线程池, 当执行相似servlet请求阻塞操做, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载  io-threads*8
+    worker-threads: 16
+    # 如下的配置会影响buffer,这些buffer会用于服务器链接的IO操做,有点相似netty的池化内存管理,每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+spring:
+  main:
+    ## 解决 xxx.FeignClientSpecification异常
+    allow-bean-definition-overriding: true
+  application:
+    name: x3-tenant-demo
+  profiles:
+    active: dev

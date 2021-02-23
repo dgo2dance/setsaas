@@ -1,0 +1,40 @@
+xiaogj:
+  x3:
+    dynamic:
+      enabled: true
+    tenant:
+      webmvc: true
+      enabled: true
+      type: schame
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://116.62.162.235:3306/mall_stock?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: mall
+    password: xiaogj2020
+    druid:
+      initial-size: 10
+      min-idle: 10
+      #最大连接数
+      max-active: 200
+      max-wait: 20000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      validation-query: SELECT 1
+      validation-query-timeout: 30000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 10
+      max-open-prepared-statements: 10
+      filters: stat,wall,slf4j
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 30000
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+  mapper-locations:
+    - classpath*:com/**/mapper/*.xml
